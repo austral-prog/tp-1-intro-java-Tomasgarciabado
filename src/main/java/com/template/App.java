@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Collections;
 
 public class App {
 
@@ -84,67 +85,119 @@ public class App {
 
     // 11. Sum of Elements in a List
     public int sumList(List<Integer> list) {
-        // TODO: Implement this method
-        return 0;
+        if (list == null || list.isEmpty()) return 0;
+        int sum = 0;
+        for (int num : list) {
+            sum += num;
+        }
+        return sum;
     }
 
     // 12. Find the Largest Element in a List
     public int findMax(List<Integer> list) {
-        // TODO: Implement this method
-        return 0;
+        if (list == null || list.isEmpty()) {
+            throw new IllegalArgumentException("La lista no puede estar vacía o ser nula");
+        }
+        return Collections.max(list);
     }
 
     // 13. Filter Even Numbers from a List
     public List<Integer> filterEvenNumbers(List<Integer> list) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        if (list == null) {
+            throw new IllegalArgumentException("La lista no puede ser nula");
+        }
+
+        List<Integer> evenNumbers = new ArrayList<>();
+        for (int num : list) {
+            if (num % 2 == 0) {   // si el número es par
+                evenNumbers.add(num);
+            }
+        }
+        return evenNumbers;
     }
+
 
     // 14. Concatenate Two Lists
     public List<String> concatenateLists(List<String> list1, List<String> list2) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        if (list1 == null || list2 == null) {
+            throw new IllegalArgumentException("Las listas no pueden ser nulas");
+        }
+        List<String> result = new ArrayList<>(list1);
+        result.addAll(list2);
+        return result;
     }
+
 
     // 15. Check if List Contains Element
     public boolean listContains(List<String> list, String element) {
-        // TODO: Implement this method
-        return false;
+        if (list == null) {
+            throw new IllegalArgumentException("La lista no puede ser nula");
+        }
+        return list.contains(element);
     }
 
     // 16. Convert Strings to Uppercase
     public List<String> toUpperCase(List<String> list) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        if (list == null) {
+            throw new IllegalArgumentException("La lista no puede ser nula");
+        }
+        List<String> result = new ArrayList<>();
+        for (String s : list) {
+            if (s != null) {
+                result.add(s.toUpperCase());
+            } else {
+                result.add(null); // mantiene nulos si existieran
+            }
+        }
+        return result;
     }
 
     // 17. Remove Duplicates from a List
     public List<Integer> removeDuplicates(List<Integer> list) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        if (list == null) {
+            throw new IllegalArgumentException("La lista no puede ser nula");
+        }
+        Set<Integer> set = new HashSet<>(list);  // elimina duplicados
+        return new ArrayList<>(set);
     }
 
     // 18. Convert List to Set for Unique Elements
     public Set<Integer> listToSet(List<Integer> list) {
-        // TODO: Implement this method
-        return new HashSet<>();
+        if (list == null) {
+            throw new IllegalArgumentException("La lista no puede ser nula");
+        }
+        return new HashSet<>(list);
     }
 
     // 19. Check if Map Contains Key
     public boolean mapContainsKey(Map<String, String> map, String key) {
-        // TODO: Implement this method
-        return false;
+        if (map == null) {
+            throw new IllegalArgumentException("El mapa no puede ser nulo");
+        }
+        return map.containsKey(key);
     }
 
     // 20. Check if Map Contains Value
     public boolean mapContainsValue(Map<String, String> map, String value) {
-        // TODO: Implement this method
-        return false;
+        if (map == null) {
+            throw new IllegalArgumentException("El mapa no puede ser nulo");
+        }
+        return map.containsValue(value);
     }
 
     // 21. Iterate Over a Map
     public List<String> iterateMap(Map<String, String> map) {
-        // TODO: Implement this method
-        return new ArrayList<>();
+        if (map == null) {
+            throw new IllegalArgumentException("El mapa no puede ser nulo");
+        }
+
+        List<String> result = new ArrayList<>();
+        for (String key : map.keySet()) {
+            String value = map.get(key);
+            result.add(key + " -> " + value);
+        }
+        return result;
     }
 }
+
+
